@@ -1,0 +1,95 @@
+*** READ ME ***
+* Settings.py 파일에서 플레이와 관련된 기능과 설정을 일부 수정 할 수 있습니다.               
+* Rolling : 회피기능으로 설정된 시간동안 무적과 구른 방향으로 이동시 이속증가.
+* Grenade : 적총알과 적군과 반응하며, 폭발시 넓은 범위의 총알과 적군을 제거.
+* Orbital Strike : 발동시 섬광은 총알만을 제거, 레이저빔이 지상에 도착하면 모든 적 제거. 
+***************
+
+
+*** exe 파일 만들기(실패) log *** 
+// 빌드 포기 모든 리소스를 전체 경로로 설정하면 경로를 가져오기는 하지만, 해당 리소스가 빌드당시에 있던 위치에 그대로 있어야 함. 
+// 상대경로로 진행해서 동작한다면 만들겠지만, 절대 경로에서만 동작해서 .....
+# pip install pyinstaller
+
+D:\python-workspace\OutlawGunner>pyinstaller -w -F --add-data="assets/*; ." Main.py
+// 아나콘다 프롬포틀로 Main.py 가 있는 경로에서 pyinstaller -w -F Main.py 실행
+단 이때 리소스를 모두 절대경로로 바꿔줘야 에러없이 빌드 됨.
+
+'assets/ ~~~ '=>
+'D:/python-workspace/OutlawGunner/assets/ ~~~~ '
+와 같은 형식으로 바꿔줘야함. 특히 어쩔 수 없이 리소스를 몰아 두지 못한 Enemy, Enemy1, Enemy2 
+는 수동으로 변경 해주고.
+나머지 경로는 Storeage 에서 찾기에서 자동으로 바꿔주면 됨.
+빌드 끝난 다음에 CTRL + Z 를 하거나 파일을 따로 빼서 관리 할 것.
+
+pip install pyinstaller 설치후 빌드시 아래의 에러 발생 5.1 버전으로 실행 
+The 'pathlib' package is an obsolete backport of a standard library package and is incompatible with PyInstaller. Please remove this package
+
+# pip install pyparsing 이미 설치 돼있는데 에러뜸
+1267 WARNING: Failed to collect submodules for 'setuptools._vendor.pyparsing.diagram' because importing 'setuptools._vendor.pyparsing.diagram' raised: ModuleNotFoundError: No module named 'railroad'
+
+
+*** 개발 환경 설정하기***
+
+필요한 ID ( 웹사이트 계정 )
+    git hub 
+    bitbucket
+
+필요한 설치 프로그램
+    git
+        설치 링크
+            https://github.com/git-for-windows/git/releases/download/v2.40.0.windows.1/Git-2.40.0-64-bit.exe
+                https://git-scm.com/download/win
+        설치 설명 ( 모두 다음 )
+            https://code-lab1.tistory.com/249
+
+    sourcetree
+        설치 링크
+            https://www.sourcetreeapp.com/
+        설치 설명 ( 모두 다음 )
+            github 링크에서
+                https://github.com/rune5362/outlawGunner2023.git
+            클론 or 다운받아서 원하는 위치에 압축 풀기 ( 최상위 폴더 이름 : OutlawGunner )
+            + Create > 폴더 경로 > 생성 
+
+
+
+번외 유용한 프로그램.
+    꿀뷰 3 : 간편한 이미지 뷰어 프로그램
+        https://kr.bandisoft.com/honeyview/
+    반디집 : 가볍고 간편한 압축 프로그램
+        https://kr.bandisoft.com/bandizip/
+
+
+gitignore 가 동작 하지 않을 때
+작업 폴더내에서 우클릭 > git bash Here
+>> git rm -r --cached .
+>> git add .
+>> git commit -m "Apply .gitignore"
+
+// git의 캐시를 제거
+// git을 다시 적용
+// git 커밋 - 메세지 "Apply .gitignore"
+
+참고자료
+https://examples.javacodegeeks.com/pygame-game-programming-in-python/
+    하단부에 pygame 내용있음.
+    The lifecycle functions like
+    init()
+    display()
+    event.get()
+    quit() 
+
+
+업무분담
+{
+	TODO LIST
+	001 적 - 나홍기
+	002 적 미사일 - 나홍기
+	003 탄환 이미지 - 나홍기
+	004 음악 - 나홍기
+	005 배경 (배경 제작 및 움직이기) - 김은영
+	006 마우스 포인터 크로스 헤어 - 김강민
+	007 필살기( 모든적 사살 ), 부가기능 (수료탄), 회피기능 - 김대균
+}
+
